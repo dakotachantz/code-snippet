@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Code Snippets</title>
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+    <header>
+        <h1>Code Snippets</h1>
+        {{#user}}
+        <h2>Logged in as {{user.username}}</h2>
+        {{/user}}
+        <a href="/logout">Logout</a>
+    </header>
+    <main>
+        <section>
+            <form class="form" action="snippet/newsnippet" method=POST>
+                <span class="header-row">
+                    <h3>Create Snippet</h3>
+                    <button class="button" type="submit">Cancel</button>
+                </span>
+                <span class="row">
+                    <input class="title" type="text" name="title" placeholder="Title" required minlength="1">
+                    <select class="title" name="language" id="language" required>
+                            <option selected disabled>Select a language...</option>
+                            <option value="Javascript">JavaScript</option>
+                            <option value="Java">Java</option>
+                            <option value="SQL">SQL</option>
+                            <option value="Ruby">Ruby</option>
+                            <option value="PHP">PHP</option>
+                            <option value="Python">Python</option>
+                    </select>
+                </span>
+                <textarea class="row" name="body" placeholder="Enter code body here..." rows="10" cols="40" required minlength="1"></textarea>
+                <span class="row">
+                <label class="comment">Add Comment <span class="optional">(optional)</span></label>
+                <textarea name="comment" placeholder="Add comments here..." rows="10" cols="40"></textarea>
+                </span>
+                <span class="row">
+                    <button class="button" type="submit">Cancel</button>
+                    <button class="button" type="submit">Create Snippet</button>
+                </span>
+            </form>
+        </section>
+        <section class="grid">
+            <div class="grid-item">
+                <div>
+                    <p>This is where the code snippets will go.</p>
+                </div>
+                <a class="button" href="/snippet/{{_id}}">View Full Snippet</a>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>

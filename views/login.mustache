@@ -10,7 +10,14 @@
 </head>
 
 <body>
-  <h1>Directory Login</h1>
+    <header>
+            <nav>
+                <a href="/signup">Sign Up</a>
+                <a class="selected" href="/login">Login</a>
+            </nav>
+    </header>
+  <main>
+  <h1>Login</h1>
   {{#errors}}
   <h4>{{.}}</h4>
   {{/errors}}
@@ -22,6 +29,7 @@
     <button type="Submit">Log in</button>
   </form>
   <a class="signup-link" href="/signup">Don't have an account? Sign up here!</a>
+  </main>
 </body>
 
 </html>
