@@ -12,7 +12,7 @@
 
 <body>
     <header>
-        <h1>Code Snippets</h1>
+        <h2>Code Snippets</h2>
         {{#user}}
         <h2>Logged in as {{user.username}}</h2>
         {{/user}}
@@ -20,7 +20,7 @@
     </header>
     <main>
         <section>
-            <form class="form" action="snippet/newsnippet" method=POST>
+            <form class="form" action="/home/newsnippet" method=POST>
                 <span class="header-row">
                     <h3>Create Snippet</h3>
                     <button class="button" type="submit">Cancel</button>
@@ -37,24 +37,36 @@
                             <option value="Python">Python</option>
                     </select>
                 </span>
-                <textarea class="row" name="body" placeholder="Enter code body here..." rows="10" cols="40" required minlength="1"></textarea>
                 <span class="row">
-                <label class="comment">Add Comment <span class="optional">(optional)</span></label>
-                <textarea name="comment" placeholder="Add comments here..." rows="10" cols="40"></textarea>
+                    <textarea class="row" name="body" placeholder="&nbsp;Enter code body here..." required minlength="1"></textarea>
                 </span>
                 <span class="row">
+                    <label for="tags">Tags</label>
+                    <input class="tags" type="text" name="tags" placeholder="Ex: #front-end #middleware" required minlength="1">
+                </span>
+                <span class="row">
+                    <label class="comment">Add Comment <span class="optional">(optional)</span></label>
+                <textarea class="comment-text" name="comment" placeholder="&nbsp;Add comments here..."></textarea>
+                </span>
+                <span class="row create">
                     <button class="button" type="submit">Cancel</button>
                     <button class="button" type="submit">Create Snippet</button>
                 </span>
             </form>
         </section>
         <section class="grid">
+            {{#snippet}}
             <div class="grid-item">
                 <div>
-                    <p>This is where the code snippets will go.</p>
+                    <p>{{title}}</p>
+                    <p>{{language}}</p>
+                    <p>{{body}}</p>
+                    <p>{{tags}}</p>
+                    <p>{{comment}}</p>
                 </div>
                 <a class="button" href="/snippet/{{_id}}">View Full Snippet</a>
             </div>
+            {{/snippet}}
         </section>
     </main>
 </body>

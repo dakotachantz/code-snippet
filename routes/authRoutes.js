@@ -33,8 +33,6 @@ authRoutes.post("/login", (req, res) => {
     let reqPassword = req.body.password;
 
     User.findOne({ username: reqUsername }).then(function (foundUser) {
-        console.log("foundUser", foundUser);
-        console.log("foundUser password", foundUser.password);
         if (!foundUser) {
             return res.render("login", { errors: ["No user found."] });
         }

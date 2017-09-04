@@ -1,13 +1,31 @@
 const express = require("express");
 const homeRoutes = express.Router();
 const User = require("../models/User");
+const Snippet = require("../models/Snippet");
 const bcrypt = require("bcryptjs");
 
 homeRoutes.get("/", (req, res) => {
     User.findOne()
         .then(function (foundUser) {
             if (!foundUser) res.status(500).send("No User Found.");
-            res.render("home", { user: foundUser });
+            Snippet.find()
+                .then(function (foundSnippets) {
+                    if (!foundSnippets) res.status(500).send("No Snippets Found.");
+                    return res.render("home", { user: foundUser, snippet: foundSnippets });
+                })
+        });
+
+});
+
+homeRoutes.post("/newsnippet", (req, res) => {
+    let newSnippet = new Snippet(req.body);
+    newSnippet
+        .save()
+        .then(function (savedSnippet) {
+            res.redirect("/home");
+        })
+        .catch(function (err) {
+            if (!savedSnippet) res.status(500).send("Error saving snippet!");
         });
 });
 
