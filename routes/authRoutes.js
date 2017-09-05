@@ -14,10 +14,10 @@ authRoutes.post("/signup", (req, res) => {
     newUser
         .save()
         .then(function (savedUser) {
-            res.redirect("/login");
+            return res.redirect("/login");
         })
         .catch(function (err) {
-            if (!savedUser) res.status(500).send("Error saving user!");
+            return res.status(500).send(err);
         });
 });
 

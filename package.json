@@ -2,7 +2,7 @@
   "name": "code-snippet",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,6 +14,7 @@
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
     "express-session": "^1.15.5",
+    "forever": "^0.15.3",
     "mongoose": "^4.10.8",
     "morgan": "^1.8.2",
     "mustache-express": "^1.2.5"

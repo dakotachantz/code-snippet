@@ -19,10 +19,13 @@ homeRoutes.get("/", (req, res) => {
 
 homeRoutes.post("/newsnippet", (req, res) => {
     let newSnippet = new Snippet(req.body);
+    console.log(newSnippet);
+    newSnippet.body = `${newSnippet.body}`;
     newSnippet
         .save()
         .then(function (savedSnippet) {
-            res.redirect("/home");
+            console.log(savedSnippet.body);
+            return res.redirect("/home");
         })
         .catch(function (err) {
             if (!savedSnippet) res.status(500).send("Error saving snippet!");

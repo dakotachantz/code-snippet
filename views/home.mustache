@@ -19,16 +19,17 @@
         <a href="/logout">Logout</a>
     </header>
     <main>
-        <section>
+        <button class="button" onclick="showSnippetForm()" id="newSnippetButton">New Snippet</button>
+        <section id="createSnippetForm" style="display: none">
             <form class="form" action="/home/newsnippet" method=POST>
                 <span class="header-row">
                     <h3>Create Snippet</h3>
-                    <button class="button" type="submit">Cancel</button>
+                    <span id="close-x" class="fa fa-times" onclick="showSnippetForm()"></span>
                 </span>
                 <span class="row">
                     <input class="title" type="text" name="title" placeholder="Title" required minlength="1">
                     <select class="title" name="language" id="language" required>
-                            <option selected disabled>Select a language...</option>
+                            <option selected disabled value="">Select a language...</option>
                             <option value="Javascript">JavaScript</option>
                             <option value="Java">Java</option>
                             <option value="SQL">SQL</option>
@@ -49,7 +50,7 @@
                 <textarea class="comment-text" name="comment" placeholder="&nbsp;Add comments here..."></textarea>
                 </span>
                 <span class="row create">
-                    <button class="button" type="submit">Cancel</button>
+                    <button class="button" onclick="showSnippetForm()" type="submit">Cancel</button>
                     <button class="button" type="submit">Create Snippet</button>
                 </span>
             </form>
@@ -57,18 +58,29 @@
         <section class="grid">
             {{#snippet}}
             <div class="grid-item">
-                <div>
-                    <p>{{title}}</p>
-                    <p>{{language}}</p>
-                    <p>{{body}}</p>
-                    <p>{{tags}}</p>
-                    <p>{{comment}}</p>
-                </div>
-                <a class="button" href="/snippet/{{_id}}">View Full Snippet</a>
+                <h2>{{language}} snippet: {{title}}</h2>
+                <pre class="code-body">{{body}}</pre>
+                <span class="code-cover">
+                </span>
+                <span class="tag">{{tags}}</span>
+                <span class="comment">{{comment}}</span>
+                <p class="view-snippet" href="/snippet/{{_id}}">View Full Snippet</p>
             </div>
             {{/snippet}}
         </section>
     </main>
+    <script type="text/javascript">
+        function showSnippetForm() {
+            event.preventDefault();
+            let form = document.getElementById("createSnippetForm");
+            if (form.style.display == 'block') {
+                form.style.display = "none";
+            } else {
+                form.style.display = "block";
+            }
+        }
+    </script>
+    <script src="https://use.fontawesome.com/27763c6ae2.js"></script>
 </body>
 
 </html>
