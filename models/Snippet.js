@@ -20,7 +20,7 @@ const snippetSchema = new Schema({
         type: String,
     },
     tags: {
-        type: String,
+        type: Array,
         required: true
     }
 });

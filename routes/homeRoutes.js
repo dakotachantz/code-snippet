@@ -32,4 +32,29 @@ homeRoutes.post("/newsnippet", (req, res) => {
         });
 });
 
+homeRoutes.get("/:lang", (req, res) => {
+    User.findOne()
+        .then(function (foundUser) {
+            if (!foundUser) res.status(500).send("No User Found.");
+            Snippet.find({ language: req.params.lang })
+                .then((snippets) => {
+                    if (!snippets) res.status(500).send(`No ${req.params.lang} snippets`);
+                    return res.render("home", { user: foundUser, snippet: snippets });
+                });
+        });
+});
+
+homeRoutes.post("/getsnippetsbytag", (req, res) => {
+    User.findOne()
+        .then(function (foundUser) {
+            if (!foundUser) res.status(500).send("No User Found.");
+            let reqTags = [req.body.tags];
+            Snippet.find({ tags: { $in: tags = reqTags } })
+                .then((snippets) => {
+                    if (!snippets) res.status(500).send(`No ${req.body} snippets`);
+                    return res.render("home", { user: foundUser, snippet: snippets });
+                });
+        });
+});
+
 module.exports = homeRoutes;

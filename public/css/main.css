@@ -4,13 +4,22 @@
 }
 
 body {
-    margin: 0;
+    margin: 0 auto;
+    background-color: #090F0F;
+}
+
+.container {
+    width: 90%;
+    height: 100%;
+    min-height: 91vh;
+    background-color: #fff;
+    margin: 0 auto;
 }
 
 a {
     text-decoration: none;
     font-weight: bold;
-    color: black;
+    color: #fff;
     font-size: 1.5em;
 }
 
@@ -18,13 +27,15 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #C4C2C2;
+    background-color: #424242;
     margin: 0;
     position: fixed;
+    z-index: 50;
     top: 0;
-    width: 98%;
+    width: 87.5%;
     padding: 0 1em;
     height: 4em;
+    color: #fff;
 }
 
 form {
@@ -40,9 +51,9 @@ form {
     flex-direction: column;
     width: 40%;
     margin: 5em auto;
-    border: 2px solid black;
+    border: 2px solid #424242;
     border-radius: 8px;
-    background-color: #ffffff;
+    background-color: #f9f9f9;
 }
 
 .login-form {
@@ -68,13 +79,14 @@ form {
     justify-content: space-between;
     align-items: center;
     height: 2em;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #424242;
     margin: 0 0 1em 0;
     padding: 1em;
-    background-color: #E5E5E5;
+    background-color: #424242;
     background-size: cover;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+    color: #fff;
 }
 
 .title {
@@ -87,6 +99,12 @@ form {
 }
 
 .comment {
+    display: flex;
+    flex-direction: column;
+    margin: 1em 0;
+}
+
+.comment-form {
     display: flex;
     flex-direction: column;
     margin: 1em 0;
@@ -110,8 +128,9 @@ input {
 
 select {
     font-size: 1em;
-    /* padding: 2em .3em; */
+    border-color: #424242;
     height: 2.3em;
+    background-color: #fff;
 }
 
 .row textarea {
@@ -119,7 +138,7 @@ select {
 }
 
 main {
-    margin-top: 6%;
+    margin-top: 11.7%;
 }
 
 .comment-text {
@@ -143,6 +162,7 @@ button {
     padding: .5em;
     border-radius: 5px;
     font-size: 1em;
+    cursor: pointer;
 }
 
 .tags {
@@ -171,10 +191,40 @@ button {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+}
+
+
+/* Add Animation */
+
+@-webkit-keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+    to {
+        top: 0;
+        opacity: 1
+    }
+}
+
+@keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+    to {
+        top: 0;
+        opacity: 1
+    }
 }
 
 .grid-item {
-    border: 1px solid black;
+    border: 1px solid #999999;
     width: 80%;
     margin: 1em auto;
     display: flex;
@@ -183,22 +233,33 @@ button {
     align-items: center;
     border-radius: 10px;
     height: 20em;
-    /* height: 100%; */
+    background-color: #f9f9f9;
 }
 
 .code-body {
     border: solid 1px #999999;
     width: 90%;
     padding: .3em 1.5em;
-    height: 10em;
-    margin: 0 auto;
+    height: 18em;
+    margin: 1em auto;
     border-radius: 10px;
-    /* height: 100%; */
+    height: 100%;
+    background-color: #fff;
 }
 
 .button {
     outline: none;
     cursor: pointer;
+    background-color: #009ED8;
+    color: #fff;
+    font-weight: bold;
+    border-color: #009ED8;
+    transition: .4s ease;
+}
+
+.button:hover {
+    transform: scale(1.1);
+    background-color: #00739D;
 }
 
 pre {
@@ -208,14 +269,10 @@ pre {
 .code-cover {
     background: linear-gradient(to bottom, rgba(255, 255, 255, .00), #ffffff);
     width: 90%;
-    height: 5em;
+    height: 7em;
     position: relative;
     z-index: 20;
-    top: -57px;
-}
-
-.tag {
-    margin-top: -40px;
+    top: -43px;
 }
 
 #newSnippetButton {
@@ -225,6 +282,11 @@ pre {
 #close-x {
     font-size: 1.5em;
     cursor: pointer;
+    transition: .4s ease;
+}
+
+#close-x:hover {
+    transform: scale(1.5);
 }
 
 .view-snippet {
@@ -232,4 +294,65 @@ pre {
     font-weight: bold;
     margin: .5em;
     cursor: pointer;
+    color: #009ED8;
+}
+
+.signup-button {
+    width: 40%;
+    margin: 0 auto;
+}
+
+.dropbtn:hover {
+    transform: scale(1);
+}
+
+.dropdown {
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: lighter;
+    position: relative;
+    display: inline-block;
+    margin-right: 2em;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 4em;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 25;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: .5em;
+    text-decoration: none;
+    display: block;
+    font-size: 1em;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.tophomebuttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    z-index: 50;
+    top: 4em;
+    width: 87.5%;
+    padding: 0 1em;
+    margin: 0;
+    background-color: #fff;
+}
+
+.login-main {
+    margin: 5.5%;
 }

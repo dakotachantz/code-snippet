@@ -11,39 +11,41 @@
 </head>
 
 <body>
-  <header>
-    <h2>Code Snippets</h2>
-    {{#errors}}
-    <h4>{{.}}</h4>
-    {{/errors}}
-    <form class="login-form" action="/login" method="POST">
-      <span class="row">
+  <div class="container">
+    <header>
+      <h2>Code Snippets</h2>
+      {{#errors}}
+      <h4>{{.}}</h4>
+      {{/errors}}
+      <form class="login-form" action="/login" method="POST">
+        <span class="row">
         <label for="username">Username</label>
-        <input type="text" name="username" placeholder="Username" required>
+        <input type="text" name="username" placeholder="Username" required autocomplete="off">
       </span>
-      <br>
-      <span class="row">
+        <br>
+        <span class="row">
         <label for="password">Password</label>
         <input type="password" name="password" placeholder="Password" required>
       </span>
-      <br>
-      <button class="login-button" type="Submit">Login</button>
-    </form>
-  </header>
-  <main>
-    <form action="/signup" method="post" class="signup-form">
-      <h2>Not a member? Sign Up Below!</h2>
-      <label for="name">Name</label><input type="text" name="name" placeholder="Name">
-      <br>
-      <label for="email">Email</label><input type="email" name="email" placeholder="Email">
-      <br>
-      <label for="username">Username</label><input type="text" name="username" placeholder="User Name">
-      <br>
-      <label for="password">Password</label><input type="password" name="password" placeholder="Password">
-      <br>
-      <button type="submit">Create Account</button>
-    </form>
-  </main>
+        <br>
+        <button class="login-button button" type="Submit">Login</button>
+      </form>
+    </header>
+    <main class="login-main">
+      <form action="/signup" method="post" class="signup-form">
+        <h2>Not a member? Sign Up Below!</h2>
+        <label for="name">Name</label><input type="text" name="name" placeholder="Name" required>
+        <br>
+        <label for="email">Email</label><input type="email" name="email" placeholder="Email" required>
+        <br>
+        <label for="username">Username</label><input type="text" name="username" placeholder="User Name" required>
+        <br>
+        <label for="password">Password</label><input type="password" name="password" placeholder="Password" required>
+        <br>
+        <button class="button signup-button" type="submit">Create Account</button>
+      </form>
+    </main>
+  </div>
 </body>
 
 </html>
