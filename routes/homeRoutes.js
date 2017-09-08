@@ -5,17 +5,13 @@ const Snippet = require("../models/Snippet");
 const bcrypt = require("bcryptjs");
 
 homeRoutes.get("/", (req, res) => {
-    User.findOne()
-        .then(function (foundUser) {
-            if (!foundUser) res.status(500).send("No User Found.");
-            Snippet.find()
-                .then(function (foundSnippets) {
-                    if (!foundSnippets) res.status(500).send("No Snippets Found.");
-                    return res.render("home", { user: foundUser, snippet: foundSnippets });
-                })
-        });
-
+    Snippet.find()
+        .then(function (foundSnippets) {
+            if (!foundSnippets) res.status(500).send("No Snippets Found.");
+            return res.render("home", { user: req.session.user, snippet: foundSnippets });
+        })
 });
+
 
 homeRoutes.post("/newsnippet", (req, res) => {
     let newSnippet = new Snippet(req.body);
@@ -27,34 +23,27 @@ homeRoutes.post("/newsnippet", (req, res) => {
             console.log(savedSnippet.body);
             return res.redirect("/home");
         })
-        .catch(function (err) {
+        .catch(function (savedSnippet) {
             if (!savedSnippet) res.status(500).send("Error saving snippet!");
         });
 });
 
 homeRoutes.get("/:lang", (req, res) => {
-    User.findOne()
-        .then(function (foundUser) {
-            if (!foundUser) res.status(500).send("No User Found.");
-            Snippet.find({ language: req.params.lang })
-                .then((snippets) => {
-                    if (!snippets) res.status(500).send(`No ${req.params.lang} snippets`);
-                    return res.render("home", { user: foundUser, snippet: snippets });
-                });
+    Snippet.find({ language: req.params.lang })
+        .then((snippets) => {
+            if (!snippets) res.status(500).send(`No ${req.params.lang} snippets`);
+            return res.render("home", { user: req.session.user, snippet: snippets });
         });
 });
 
 homeRoutes.post("/getsnippetsbytag", (req, res) => {
-    User.findOne()
-        .then(function (foundUser) {
-            if (!foundUser) res.status(500).send("No User Found.");
-            let reqTags = [req.body.tags];
-            Snippet.find({ tags: { $in: tags = reqTags } })
-                .then((snippets) => {
-                    if (!snippets) res.status(500).send(`No ${req.body} snippets`);
-                    return res.render("home", { user: foundUser, snippet: snippets });
-                });
+    let reqTags = [req.body.tags];
+    Snippet.find({ tags: { $in: tags = reqTags } })
+        .then((snippets) => {
+            if (!snippets) res.status(500).send(`No ${req.body} snippets`);
+            return res.render("home", { user: req.session.user, snippet: snippets });
         });
 });
+
 
 module.exports = homeRoutes;

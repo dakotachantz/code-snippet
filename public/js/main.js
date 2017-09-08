@@ -21,7 +21,7 @@ function showFullSnippet() {
         cover.style.display = 'none';
     } else {
         snippet.style.height = '20em';
-        viewSnippet.textContent = "View Snippet";
+        viewSnippet.textContent = "View Full Snippet";
         cover.style.display = 'block';
     }
 }

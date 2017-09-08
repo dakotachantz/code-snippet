@@ -45,13 +45,13 @@ authRoutes.post("/login", (req, res) => {
 
         delete foundUser.password;
         req.session.user = foundUser;
-        res.redirect("/home");
+        return res.redirect("/home");
     });
 });
 
 authRoutes.get("/logout", (req, res) => {
     req.session.destroy();
-    res.redirect("/");
+    return res.redirect("/");
 });
 
 module.exports = authRoutes;
