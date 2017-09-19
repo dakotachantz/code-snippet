@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
@@ -14,7 +14,6 @@
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
     "express-session": "^1.15.5",
-    "forever": "^0.15.3",
     "jest": "^21.0.1",
     "mongoose": "^4.10.8",
     "morgan": "^1.8.2",

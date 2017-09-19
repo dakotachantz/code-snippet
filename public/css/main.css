@@ -240,7 +240,7 @@ button {
     border: solid 1px #999999;
     width: 90%;
     padding: .3em 1.5em;
-    height: 18em;
+    height: 25em;
     margin: 1em auto;
     border-radius: 10px;
     height: 100%;
@@ -355,4 +355,16 @@ pre {
 
 .login-main {
     margin: 5.5%;
+}
+
+.delete-link {
+    color: red;
+    align-self: flex-end;
+    margin: .5em .5em 0em .5em;
+    position: relative;
+    top: -2.5em;
+}
+
+h2 {
+    text-align: center;
 }

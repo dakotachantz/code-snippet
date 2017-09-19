@@ -20,7 +20,6 @@ homeRoutes.post("/newsnippet", (req, res) => {
     newSnippet
         .save()
         .then(function (savedSnippet) {
-            console.log(savedSnippet.body);
             return res.redirect("/home");
         })
         .catch(function (savedSnippet) {
