@@ -14,7 +14,9 @@ const bluebird = require("bluebird");
 const app = express();
 
 mongoose.Promise = bluebird;
-mongoose.connect("mongodb://localhost:27017/code-snippet");
+mongoose.connect(
+  "mongodb://dakotachantz:Colt4406!@code-snippet-shard-00-00-si9oe.mongodb.net:27017,code-snippet-shard-00-01-si9oe.mongodb.net:27017,code-snippet-shard-00-02-si9oe.mongodb.net:27017/test?ssl=true&replicaSet=code-snippet-shard-0&authSource=admin"
+);
 
 // TEMPLATING ENGINE
 app.engine("mustache", mustacheExpress());
